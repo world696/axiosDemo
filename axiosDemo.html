@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+		<link rel="stylesheet" href="./js/layui/css/layui.css">
+		<link rel="stylesheet" href="./css/axiosDemo.css">
+	</head>
+	<body>
+		<!-- 头部 -->
+		<header class="header-title" >
+			<div>管理系统</div>
+			<ul class="layui-nav" lay-filter="">
+				<li class="layui-nav-item">
+					<a href="" onclick="showUsername()" id="showUser">我</a>
+					<dl class="layui-nav-child">
+						<dd><a href="javascript:;" onclick="loginOut()">退出</a></dd>
+					</dl>
+				</li>
+			</ul>
+		</header>
+		<!-- 主体部分 -->
+		<div class="main">
+			<div class="left layui-bg-black">
+				<ul class="layui-nav layui-nav-tree" lay-filter="demo">
+					<li class="layui-nav-item layui-nav-itemed">
+						<a href="javascript:;">信息管理</a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;">用户信息列表</a></dd>
+							<dd><a href="javascript:;">信息列表</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<div class="right">
+				<div class="layui-tab">
+					<ul class="layui-tab-title">
+						<li class="layui-this">网站设置</li>
+					</ul>
+				</div>
+				<table class="layui-table " style="margin-left: 10px;">
+					<colgroup>
+						<col width="150">
+						<col width="200">
+						<col>
+					</colgroup>
+					<thead>
+						<tr>
+							<th>用户ID</th>
+							<th>用户姓名</th>
+							<th>年龄</th>
+							<th>性别</th>
+							<th>地区</th>
+						</tr>
+					</thead>
+					<tbody id="showUserList"></tbody>
+				</table>
+			    <div id="page" onclick="getUserData()"></div>
+			</div>
+		</div>
+		<!-- 底部 -->
+		<footer class="bottom">
+			&copy; world_66
+		</footer>
+		<script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.min.js"></script>
+		<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<script src="./js/layui/layui.js"></script>
+		<script src="./js/axiosDemo.js"></script>
+		<script src="./js/api.js"></script>
+		<script src="./js/showUserData.js"></script>
+		<script>
+			getUserData();
+		</script>
+	</body>
+</html>

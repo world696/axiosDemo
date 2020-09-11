@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>axios</title>
+    <style type="text/css">
+        table {
+            width: 400px;
+        }
+        #showTestData {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="showTest()">测试</button>
+		<table>
+			<tr>
+				<th>编号</th>
+				<th>姓名</th>
+				<th>年龄</th>
+				<th>性别</th>
+				<th>地址</th>
+			</tr>
+			<tbody id="showTestData"></tbody>
+        </table>
+        <script src="https://cdn.bootcdn.net/ajax/libs/axios/0.1.0/axios.min.js"></script>
+        <script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.0/jquery.min.js"></script>
+		<script type="text/javascript">
+            var showTestData = document.getElementById("showTestData");
+            var url = 'https://www.fastmock.site/mock/25a56f3356a8e26d7b201c62197c000a/test/get';
+            // 用axios发送请求，对比ajax发送来看
+            function showTest(){
+                axios.get(url).then((res)=>{
+                   console.log(res.user);
+                   showData(res.user);
+                })
+            }
+
+            // function showTest() {
+			// 	// 创建对象
+			// 	var testAjax = new XMLHttpRequest();
+			// 	// 设置请求参数
+			// 	testAjax.open('GET', 'https://www.fastmock.site/mock/25a56f3356a8e26d7b201c62197c000a/test/get', true);
+			// 	// 发送请求
+			// 	testAjax.send();
+			// 	// 服务器响应
+			// 	testAjax.onreadystatechange = function() {
+			// 		if (testAjax.readyState === 4 && testAjax.status === 200) {
+			// 			console.log(testAjax.response);
+			// 			// JSON.parse()将json字符串转为json对象；JSON.stringfy()将json对象转为json字符串
+			// 			var res = JSON.parse(testAjax.response);
+			// 			console.log(res.user);
+			// 			showData(res.user)
+			// 		}
+			// 	}
+			// }
+			function showData(data) {
+				var str = '';
+				data.forEach((item, index) => {
+                    str += `<tr>
+                               <td>${item.userID}</td>
+                               <td>${item.name}</td>
+                               <td>${item.age}</td>
+                               <td>${item.sex}</td>
+                               <td>${item.city}</td>
+                            </tr>`
+					})
+				showTestData.innerHTML = str;
+            }
+		</script>
+    </body>
+</html>
